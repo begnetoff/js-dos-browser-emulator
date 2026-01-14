@@ -1,0 +1,14 @@
+{
+  "name": "wolf3d-emulator",
+  "version": "1.0.0",
+  "description": "Минималистичный сайт для игры Wolfenstein 3D через DOS эмулятор",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}

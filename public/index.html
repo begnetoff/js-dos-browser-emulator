@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Wolfenstein 3D — Emulator</title>
+
+  <style>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: monospace;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    #dos {
+      width: 640px;
+      height: 400px;
+      margin: 20px auto;
+      border: 3px solid #00fff2;
+      box-shadow: 0 0 20px #00fff2;
+    }
+
+    #start {
+      padding: 12px 30px;
+      margin-top: 20px;
+      background: #00fff2;
+      border: none;
+      color: #000;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: .2s;
+    }
+
+    #start:hover {
+      transform: scale(1.1);
+      background: #0ff;
+    }
+  </style>
+
+  <!-- js-dos 6.22 -->
+  <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+  <link rel="stylesheet" href="https://js-dos.com/6.22/current/js-dos.css" />
+</head>
+
+<body>
+
+<h1 style="color:#00fff2; text-shadow:0 0 10px #00fff2;">Wolfenstein 3D (DOS)</h1>
+
+<div id="dos"></div>
+
+<button id="start">Запустить игру</button>
+
+<script>
+document.getElementById("start").onclick = async () => {
+  try {
+    const dos = await Dos(document.getElementById("dos"), {
+      wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js"
+    });
+
+    // Загружаем ваш game.zip
+    const response = await fetch("game.zip");
+    const buffer = await response.arrayBuffer();
+    const zipFile = new Uint8Array(buffer);
+
+    const fs = dos.fs;
+
+    // Извлекаем файлы из архива
+    await fs.extract(zipFile);
+
+    // Запуск EXE
+    await dos.run(["WOLF3D.EXE"]);
+
+  } catch (e) {
+    alert("Ошибка: " + e);
+    console.error(e);
+  }
+};
+</script>
+
+</body>
+</html>

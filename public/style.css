@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("https://hopefulhomies.com/wp-content/uploads/2017/11/wolfenstein-old.jpg?w=620");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  backdrop-filter: blur(2px);
+}
+
+.container {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #222;
+  color: #eee;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #444;
+}
